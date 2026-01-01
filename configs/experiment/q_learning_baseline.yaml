@@ -1,0 +1,27 @@
+# Q-Learning Baseline Configuration
+defaults:
+  - base
+
+# Override experiment name
+mlflow:
+  experiment_name: "q-learning-baseline"
+
+# Q-Learning specific settings
+training:
+  algorithm: "q_learning"
+  alpha: 0.1
+  gamma: 0.95
+  epsilon: 0.2
+  n_episodes: 500
+
+# Environment
+environment:
+  missing_rate: 0.4
+
+# Run metadata
+run:
+  name: "q_learning_missing_40"
+  tags:
+    algorithm: "q-learning"
+    missing_rate: "0.4"
+    baseline: "true"

@@ -1,0 +1,72 @@
+project:
+  name: "rl-cdss-prescription-safety"
+  version: "1.0.0"
+  author: "Herald Michain Samuel Theo Ginting"
+  email: "heraldmsamueltheo@gmail.com"
+  repository: "https://github.com/loxleyftsck/adaptive-cdss-under-uncertainty"
+  description: "Reinforcement Learning for Prescription Safety Under Incomplete Patient Information"
+
+# Training hyperparameters
+training:
+  n_episodes: 500
+  alpha: 0.1 # Learning rate
+  gamma: 0.95 # Discount factor
+  epsilon: 0.2 # Exploration rate (training)
+  epsilon_eval: 0.0 # Exploration rate (evaluation)
+  random_seed: 42
+  log_interval: 100
+  save_interval: 100
+
+# Environment configuration
+environment:
+  missing_rate: 0.4 # Baseline: 40% missing data
+  drugs:
+    - warfarin
+    - aspirin
+    - ibuprofen
+    - metformin
+    - lisinopril
+    - atorvastatin
+    - amlodipine
+
+  conditions:
+    - diabetes
+    - hypertension
+    - renal_impairment
+    - heart_failure
+    - atrial_fibrillation
+
+  patient_generation:
+    age_range: [18, 85]
+    max_conditions: 3
+    max_medications: 4
+    renal_impairment_prob: 0.3
+    hepatic_impairment_prob: 0.2
+
+# Evaluation settings
+evaluation:
+  n_test_episodes: 100
+  missing_rates: [0.2, 0.4, 0.6, 0.8]
+  n_runs: 5 # For statistical validation
+  significance_level: 0.01
+
+# MLflow configuration
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "rl-cdss-baseline"
+  artifact_location: "./mlruns"
+  registry_uri: "sqlite:///mlflow.db"
+
+# Paths
+paths:
+  knowledge: "knowledge/"
+  data: "data/"
+  models: "models/"
+  results: "results/"
+  logs: "logs/"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/training/training.log"

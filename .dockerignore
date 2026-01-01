@@ -1,0 +1,35 @@
+# Python
+*.pyc
+__pycache__/
+*.egg-info/
+
+# Data
+data/
+!data/.gitkeep
+
+# Models
+models/
+!models/.gitkeep
+
+# Results
+results/
+!results/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+
+# Documentation
+docs/
+!docs/.gitkeep
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,27 @@
+# SARSA Conservative Configuration
+defaults:
+  - base
+
+# Override experiment name
+mlflow:
+  experiment_name: "sarsa-conservative"
+
+# SARSA specific settings (on-policy, more conservative)
+training:
+  algorithm: "sarsa"
+  alpha: 0.1
+  gamma: 0.95
+  epsilon: 0.25 # Slightly higher exploration for on-policy
+  n_episodes: 550
+
+# Environment
+environment:
+  missing_rate: 0.4
+
+# Run metadata
+run:
+  name: "sarsa_missing_40"
+  tags:
+    algorithm: "sarsa"
+    missing_rate: "0.4"
+    baseline: "true"

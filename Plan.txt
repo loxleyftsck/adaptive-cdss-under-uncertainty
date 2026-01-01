@@ -1,0 +1,912 @@
+# Reinforcement Learning for Prescription Safety Under Incomplete Information
+## Comprehensive Project Roadmap v2.0
+
+---
+
+## 🎯 PROJECT POSITIONING
+
+**Title:** Reinforcement Learning Approach to Prescription Safety Under Incomplete Patient Information: A Synthetic Environment Study
+
+**One-liner:**
+*"Most clinical decision support systems fail when patient data is incomplete. This project explores how reinforcement learning can maintain prescription safety under uncertainty using a synthetic pharmacological environment."*
+
+**Target Audience:**
+- ML/AI Engineers
+- Research Advisors
+- Technical Interviewers
+- Portfolio Reviewers
+
+**What This Is:**
+- Methodological demonstration of RL in safety-critical decisions
+- POMDP-inspired approach to partial observability
+- Engineering-quality implementation with controlled experiments
+
+**What This Is NOT:**
+- Clinical validation study
+- Production-ready medical software
+- Novel RL algorithm research
+- Real patient data analysis
+
+---
+
+## 📐 PROBLEM FORMULATION
+
+### Clinical Context
+Drug-drug interactions (DDI) and contraindications represent significant patient safety risks. Traditional rule-based CDSS can identify potential DDIs but often lead to alert fatigue, while incomplete patient records create uncertainty in decision-making.
+
+### Technical Challenge
+How to design a decision system that:
+1. Maintains safety performance under missing data
+2. Balances false alarms vs missed risks
+3. Adapts to context rather than fixed rules
+
+### Formal Problem (POMDP-Inspired)
+
+**State Space (S)** - Hidden clinical reality:
+- True patient conditions (renal function, liver function, comorbidities)
+- Actual pharmacological interactions
+- Latent contraindication risks
+
+**Observation Space (O)** - Partial view:
+- Age, recorded diagnoses
+- Current medication list
+- Incomplete lab results (40% missing rate)
+
+**Action Space (A)** - Clinical decisions:
+- `0: APPROVE` - prescription is safe
+- `1: WARN` - flag interaction risk
+- `2: SUGGEST_ALT` - recommend safer alternative
+- `3: REQUEST_DATA` - ask for additional information
+
+**Reward Function (R)** - Safety-centered:
+```
+R(s,a) = {
+  -10  if severe interaction occurs (contraindicated combo)
+  -8   if moderate interaction + contraindication
+  -5   if moderate interaction alone
+  +3   if correct warning issued
+  +2   if safe approval
+  -1   if false alarm (alert fatigue penalty)
+  +1   if data request leads to better decision
+}
+```
+
+**Transition (T):** Episode-based (1 prescription = 1 episode)
+
+**Discount (γ):** 0.95 (moderate future awareness)
+
+---
+
+## 🎓 THEORETICAL FOUNDATION
+
+### 1. Clinical Decision Support Systems (CDSS)
+CDSS using reinforcement learning has been applied to optimize drug selection, dosing, and intervention timing in ICU settings, demonstrating feasibility beyond rule-based systems.
+
+### 2. Limitations of Rule-Based Systems
+- Cannot adapt to patient context
+- Generate alert fatigue (CDSS can identify DDIs but may lead to alert fatigue)
+- Fail gracefully under missing data
+- No optimization of tradeoffs
+
+### 3. Reinforcement Learning for Medical Decisions
+Deep Q-learning has been successfully used to optimize chemotherapy dosing schedules while minimizing drug toxicity, proving RL's applicability to medication decisions.
+
+**Why RL?**
+- Long-term safety optimization (not just classification)
+- Context-aware decisions (patient-specific)
+- Reward-based tradeoffs (safety vs alert fatigue)
+- Online adaptation capability
+
+### 4. Partial Observability in Healthcare
+POMDP models have been applied to chronic disease management where health conditions are partially observable through imperfect screening. POMDPs are particularly suitable for medical scenarios where diagnosis and patient response are uncertain.
+
+**Clinical Reality:**
+- Lab results delayed or missing
+- Patient history incomplete
+- Symptoms self-reported (noisy)
+- Hidden physiological states
+
+### 5. Synthetic Clinical Environments
+Synthetic data from PK-PD modeling has been used to test RL precision dosing with 50% interindividual variability. RL has successfully managed antibiotic resistance in simulated E. coli populations, validating synthetic environment approaches.
+
+**Justification:**
+- Controlled experimentation
+- Ground truth availability
+- Reproducible results
+- Ethical (no patient risk)
+
+### 6. Belief State in Practice
+Since true state is hidden, agent maintains belief distribution over possible patient states. Belief states in medical POMDPs are updated based on screening results and partially observable health conditions.
+
+**Implementation:** Feature aggregation approximation (sufficient for portfolio-grade RL)
+
+---
+
+## 📊 SUCCESS METRICS
+
+### Primary Metrics
+1. **Severe Interaction Detection Rate ≥ 85%**
+   - Proportion of high-severity DDIs caught
+   
+2. **False Negative Rate ≤ 10%**
+   - Missed severe interactions
+   
+3. **Policy Convergence within 500 episodes**
+   - Stable reward trajectory
+
+### Secondary Metrics
+4. **Precision vs Baseline**
+   - Compare to random and rule-based policies
+   
+5. **Robustness to Missing Data**
+   - Performance degradation as observability decreases (20% → 60% missing)
+   
+6. **Alert Quality**
+   - False alarm rate (target: ≤ 15%)
+
+### Evaluation Dimensions
+- **Safety:** Severe interactions prevented
+- **Efficiency:** Convergence speed
+- **Robustness:** Performance under noise/missing data
+- **Interpretability:** Decision trace clarity
+
+---
+
+## 🗓️ PHASE-BY-PHASE ROADMAP (14 DAYS)
+
+---
+
+### **Phase 0: Problem Framing & Setup** (Day 1)
+
+**Duration:** 4 hours
+
+**Objectives:**
+- Finalize problem statement
+- Setup repository structure
+- Write initial README
+- Define scope boundaries
+
+**Deliverables:**
+```
+adaptive-cdss-pomdp/
+├── README.md (draft)
+├── docs/
+│   ├── formulation.md
+│   └── references.md
+├── knowledge/
+├── env/
+├── agent/
+├── evaluation/
+├── notebooks/
+└── requirements.txt
+```
+
+**Key Decisions:**
+- Drug list: 7 drugs (warfarin, aspirin, ibuprofen, metformin, lisinopril, atorvastatin, amlodipine)
+- Interaction pairs: ~12-15 combinations
+- Observation masking rate: 40% baseline
+- Episode length: 1 prescription decision
+
+**Success Criteria:**
+- ✅ Repo initialized with structure
+- ✅ Problem statement written
+- ✅ Scope documented (what's in/out)
+
+---
+
+### **Phase 1: Knowledge Foundation** (Days 2-3)
+
+**Duration:** 2 days (16 hours total)
+
+**Objectives:**
+- Curate pharmacological ground truth
+- Build interaction database
+- Define severity levels
+- Create contraindication rules
+
+**Activities:**
+
+**Day 2 (8h):**
+1. Research DDI pairs from FDA Drug Interaction Database (4h)
+2. Categorize severity (high/medium/low) (2h)
+3. Write `drugs.json` with 7 drugs (1h)
+4. Write `interactions.json` with 12-15 pairs (1h)
+
+**Day 3 (8h):**
+1. Define contraindications per drug (3h)
+2. Create severity matrix (2h)
+3. Validation: consistency checks (2h)
+4. Documentation: knowledge base rationale (1h)
+
+**Deliverables:**
+```python
+# knowledge/drugs.json
+{
+  "warfarin": {
+    "class": "anticoagulant",
+    "common_uses": ["blood_clots", "atrial_fibrillation"]
+  },
+  "aspirin": {
+    "class": "antiplatelet",
+    "common_uses": ["pain", "cardiovascular_prevention"]
+  },
+  # ... 5 more drugs
+}
+
+# knowledge/interactions.json
+{
+  "warfarin+aspirin": {
+    "severity": "high",
+    "mechanism": "increased_bleeding_risk",
+    "evidence": "FDA_label"
+  },
+  "warfarin+ibuprofen": {
+    "severity": "medium",
+    "mechanism": "bleeding_risk",
+    "evidence": "clinical_trials"
+  },
+  # ... 10-13 more pairs
+}
+
+# knowledge/contraindications.json
+{
+  "ibuprofen": {
+    "conditions": ["renal_impairment", "severe_heart_failure"],
+    "severity": "high"
+  },
+  "metformin": {
+    "conditions": ["renal_impairment", "liver_disease"],
+    "severity": "high"
+  },
+  # ... 5 more drugs
+}
+
+# knowledge/severity_matrix.json
+{
+  "high": {"penalty": -10, "description": "life-threatening"},
+  "medium": {"penalty": -5, "description": "serious_but_manageable"},
+  "low": {"penalty": -2, "description": "monitor_required"}
+}
+```
+
+**Validation Checklist:**
+- ✅ No duplicate interaction pairs
+- ✅ All drugs have at least 1 interaction
+- ✅ Contraindications map to valid conditions
+- ✅ Severity levels consistent
+- ✅ At least 3 high-severity interactions
+
+**Success Criteria:**
+- ✅ Knowledge base validated
+- ✅ 7 drugs, 12-15 interactions, 5-7 contraindications
+- ✅ Documentation of sources
+
+---
+
+### **Phase 2: Synthetic Clinical Environment** (Days 4-7)
+
+**Duration:** 4 days (32 hours)
+
+**Objectives:**
+- Build patient generator
+- Implement partial observability
+- Create episode structure
+- Integrate reward function
+
+**Day 4 (8h): Patient Generator**
+```python
+# env/patient_generator.py
+
+class PatientGenerator:
+    """
+    Generates synthetic patient profiles with hidden states.
+    """
+    def __init__(self, drugs, conditions):
+        self.drugs = drugs
+        self.conditions = conditions
+    
+    def sample(self):
+        """Sample one patient case"""
+        n_conditions = np.random.randint(0, 3)
+        n_meds = np.random.randint(1, 4)
+        
+        patient = {
+            "age": np.random.randint(18, 85),
+            "conditions": random.sample(self.conditions, n_conditions),
+            "medications": random.sample(self.drugs, n_meds),
+            "hidden_state": {
+                "renal_function": np.random.choice(["normal", "impaired"], p=[0.7, 0.3]),
+                "liver_function": np.random.choice(["normal", "impaired"], p=[0.8, 0.2])
+            }
+        }
+        return patient
+```
+
+**Day 5 (8h): Observation Model**
+```python
+# env/observation_model.py
+
+class ObservationModel:
+    """
+    Simulates partial observability via data masking.
+    """
+    def __init__(self, missing_rate=0.4):
+        self.missing_rate = missing_rate
+    
+    def observe(self, patient):
+        """Return partial observation"""
+        obs = {
+            "age": patient["age"],
+            "medications": patient["medications"].copy(),
+            "conditions": [],
+            "data_completeness": 1.0
+        }
+        
+        # Mask conditions with probability missing_rate
+        if np.random.random() > self.missing_rate:
+            obs["conditions"] = patient["conditions"].copy()
+        else:
+            obs["data_completeness"] = 0.6
+        
+        # Hide lab values (renal/liver) 40% of time
+        if np.random.random() > self.missing_rate:
+            obs["lab_available"] = True
+            obs["hidden_state"] = patient["hidden_state"]
+        else:
+            obs["lab_available"] = False
+            obs["data_completeness"] *= 0.7
+        
+        return obs
+```
+
+**Day 6 (8h): Reward Function**
+```python
+# env/reward.py
+
+class RewardFunction:
+    """
+    Safety-centered reward with alert fatigue penalty.
+    """
+    def __init__(self, interactions, contraindications, severity_matrix):
+        self.interactions = interactions
+        self.contra = contraindications
+        self.severity = severity_matrix
+    
+    def compute(self, patient, action):
+        """
+        Compute reward based on true patient state and action taken.
+        """
+        meds = patient["medications"]
+        conditions = patient["conditions"]
+        hidden = patient["hidden_state"]
+        
+        # Ground truth risk assessment
+        interaction_risk = 0
+        contra_risk = 0
+        
+        # Check pairwise drug interactions
+        for i in range(len(meds)):
+            for j in range(i+1, len(meds)):
+                pair = f"{meds[i]}+{meds[j]}"
+                if pair in self.interactions:
+                    sev = self.interactions[pair]["severity"]
+                    interaction_risk += abs(self.severity[sev]["penalty"])
+        
+        # Check contraindications
+        for med in meds:
+            if med in self.contra:
+                for condition in conditions:
+                    if condition in self.contra[med]["conditions"]:
+                        contra_risk += 8
+        
+        # Check hidden state contraindications
+        for med in meds:
+            if med in self.contra:
+                if "renal_impairment" in self.contra[med]["conditions"]:
+                    if hidden["renal_function"] == "impaired":
+                        contra_risk += 8
+        
+        total_risk = interaction_risk + contra_risk
+        
+        # Reward shaping based on action
+        if action == 0:  # APPROVE
+            if total_risk == 0:
+                return 2  # Safe approval
+            else:
+                return -total_risk  # Missed risk (penalty)
+        
+        elif action == 1:  # WARN
+            if total_risk > 5:
+                return 3  # Correct warning
+            else:
+                return -1  # False alarm (alert fatigue)
+        
+        elif action == 2:  # SUGGEST_ALT
+            if total_risk > 8:
+                return 4  # Good suggestion
+            else:
+                return -1  # Unnecessary
+        
+        elif action == 3:  # REQUEST_DATA
+            if obs["data_completeness"] < 0.8:
+                return 1  # Good data request
+            else:
+                return -0.5  # Unnecessary delay
+```
+
+**Day 7 (8h): Environment Integration**
+```python
+# env/cdss_env.py
+
+class CDSSEnvironment:
+    """
+    Gym-like environment for prescription safety RL.
+    """
+    def __init__(self, knowledge_path="knowledge/"):
+        # Load knowledge base
+        with open(f"{knowledge_path}/drugs.json") as f:
+            self.drugs = json.load(f)
+        with open(f"{knowledge_path}/interactions.json") as f:
+            self.interactions = json.load(f)
+        with open(f"{knowledge_path}/contraindications.json") as f:
+            self.contra = json.load(f)
+        with open(f"{knowledge_path}/severity_matrix.json") as f:
+            self.severity = json.load(f)
+        
+        self.generator = PatientGenerator(
+            list(self.drugs.keys()),
+            ["diabetes", "hypertension", "renal_impairment", "heart_failure"]
+        )
+        self.observer = ObservationModel(missing_rate=0.4)
+        self.reward_fn = RewardFunction(
+            self.interactions, 
+            self.contra, 
+            self.severity
+        )
+        
+        self.current_patient = None
+        self.action_space = 4  # APPROVE, WARN, SUGGEST_ALT, REQUEST_DATA
+    
+    def reset(self):
+        """Start new episode with new patient"""
+        self.current_patient = self.generator.sample()
+        obs = self.observer.observe(self.current_patient)
+        return obs
+    
+    def step(self, action):
+        """Execute action and return (obs, reward, done, info)"""
+        reward = self.reward_fn.compute(self.current_patient, action)
+        done = True  # Single-step episode
+        info = {
+            "true_risk": self._compute_true_risk(),
+            "action": action,
+            "patient_id": id(self.current_patient)
+        }
+        return None, reward, done, info
+    
+    def _compute_true_risk(self):
+        """For evaluation purposes"""
+        # Implementation similar to reward function
+        pass
+```
+
+**Success Criteria:**
+- ✅ Environment runs without errors
+- ✅ Random policy achieves negative average reward (sanity check)
+- ✅ High-risk patients generate appropriate penalties
+- ✅ Data completeness tracked correctly
+
+---
+
+### **Phase 3: RL Decision Agent** (Days 8-10)
+
+**Duration:** 3 days (24 hours)
+
+**Objectives:**
+- Implement Q-learning baseline
+- Add SARSA comparison
+- Create state encoding
+- Training loop with logging
+
+**Day 8 (8h): State Encoding & Q-Learning Core**
+```python
+# agent/state_encoding.py
+
+def encode_state(observation):
+    """
+    Convert observation to hashable state representation.
+    Handles partial observability via feature aggregation.
+    """
+    meds = tuple(sorted(observation["medications"]))
+    age_bucket = observation["age"] // 10
+    
+    # Encode data completeness
+    completeness = int(observation["data_completeness"] * 10)
+    
+    # Encode known conditions (may be empty if masked)
+    conditions = tuple(sorted(observation.get("conditions", [])))
+    
+    state = (meds, age_bucket, completeness, conditions)
+    return state
+
+# agent/q_learning.py
+
+class QLearningAgent:
+    """
+    Tabular Q-learning with epsilon-greedy exploration.
+    """
+    def __init__(self, n_actions=4, alpha=0.1, gamma=0.95, epsilon=0.2):
+        self.q_table = defaultdict(lambda: np.zeros(n_actions))
+        self.alpha = alpha  # Learning rate
+        self.gamma = gamma  # Discount factor
+        self.epsilon = epsilon  # Exploration rate
+        self.n_actions = n_actions
+    
+    def select_action(self, state):
+        """Epsilon-greedy action selection"""
+        if np.random.random() < self.epsilon:
+            return np.random.randint(self.n_actions)
+        return np.argmax(self.q_table[state])
+    
+    def update(self, state, action, reward, next_state=None, done=True):
+        """Q-learning update rule"""
+        if done:
+            target = reward
+        else:
+            target = reward + self.gamma * np.max(self.q_table[next_state])
+        
+        td_error = target - self.q_table[state][action]
+        self.q_table[state][action] += self.alpha * td_error
+        
+        return abs(td_error)  # For logging
+```
+
+**Day 9 (8h): SARSA & Training Loop**
+```python
+# agent/sarsa.py
+
+class SARSAAgent(QLearningAgent):
+    """
+    On-policy SARSA algorithm.
+    """
+    def update(self, state, action, reward, next_state, next_action, done=True):
+        """SARSA update rule"""
+        if done:
+            target = reward
+        else:
+            target = reward + self.gamma * self.q_table[next_state][next_action]
+        
+        td_error = target - self.q_table[state][action]
+        self.q_table[state][action] += self.alpha * td_error
+        
+        return abs(td_error)
+
+# agent/trainer.py
+
+class Trainer:
+    """
+    Training loop with logging and checkpointing.
+    """
+    def __init__(self, env, agent, n_episodes=1000):
+        self.env = env
+        self.agent = agent
+        self.n_episodes = n_episodes
+        self.history = {
+            "rewards": [],
+            "td_errors": [],
+            "episode": []
+        }
+    
+    def train(self):
+        """Main training loop"""
+        for episode in tqdm(range(self.n_episodes)):
+            obs = self.env.reset()
+            state = encode_state(obs)
+            action = self.agent.select_action(state)
+            
+            _, reward, done, info = self.env.step(action)
+            
+            td_error = self.agent.update(state, action, reward)
+            
+            # Logging
+            self.history["rewards"].append(reward)
+            self.history["td_errors"].append(td_error)
+            self.history["episode"].append(episode)
+            
+            # Checkpoint every 100 episodes
+            if (episode + 1) % 100 == 0:
+                self._log_progress(episode)
+        
+        return self.history
+    
+    def _log_progress(self, episode):
+        """Print training progress"""
+        recent_rewards = self.history["rewards"][-100:]
+        avg_reward = np.mean(recent_rewards)
+        print(f"Episode {episode+1}: Avg Reward = {avg_reward:.2f}")
+```
+
+**Day 10 (8h): Baseline Policies & Comparison**
+```python
+# agent/baselines.py
+
+class RandomPolicy:
+    """Random action baseline"""
+    def __init__(self, n_actions=4):
+        self.n_actions = n_actions
+    
+    def select_action(self, state):
+        return np.random.randint(self.n_actions)
+
+class RuleBasedPolicy:
+    """
+    Static rule-based baseline:
+    - WARN if any known high-severity interaction
+    - APPROVE otherwise
+    """
+    def __init__(self, interactions, severity):
+        self.interactions = interactions
+        self.severity = severity
+    
+    def select_action(self, observation):
+        meds = observation["medications"]
+        
+        # Check for known interactions
+        for i in range(len(meds)):
+            for j in range(i+1, len(meds)):
+                pair = f"{meds[i]}+{meds[j]}"
+                if pair in self.interactions:
+                    if self.interactions[pair]["severity"] == "high":
+                        return 1  # WARN
+        
+        return 0  # APPROVE
+```
+
+**Success Criteria:**
+- ✅ Q-learning converges (reward increases over episodes)
+- ✅ TD error decreases over time
+- ✅ Agent outperforms random policy after 500 episodes
+- ✅ State space remains tractable (< 10,000 unique states)
+
+---
+
+### **Phase 4: Evaluation & Stress Testing** (Days 11-12)
+
+**Duration:** 2 days (16 hours)
+
+**Objectives:**
+- Compare RL vs baselines
+- Robustness to missing data
+- Safety metrics computation
+- Statistical validation
+
+**Day 11 (8h): Metrics & Comparison**
+```python
+# evaluation/metrics.py
+
+class SafetyMetrics:
+    """
+    Compute safety-specific evaluation metrics.
+    """
+    def __init__(self, env, agent, n_episodes=100):
+        self.env = env
+        self.agent = agent
+        self.n_episodes = n_episodes
+    
+    def evaluate(self):
+        """Run evaluation episodes"""
+        results = {
+            "severe_detected": 0,
+            "severe_missed": 0,
+            "false_warnings": 0,
+            "safe_approvals": 0,
+            "total_episodes": 0
+        }
+        
+        for _ in range(self.n_episodes):
+            obs = self.env.reset()
+            state = encode_state(obs)
+            action = self.agent.select_action(state)
+            
+            _, reward, done, info = self.env.step(action)
+            
+            true_risk = info["true_risk"]
+            
+            # Classify outcome
+            if true_risk > 8:  # Severe risk present
+                if action in [1, 2]:  # WARN or SUGGEST_ALT
+                    results["severe_detected"] += 1
+                else:
+                    results["severe_missed"] += 1
+            else:  # No severe risk
+                if action in [1, 2]:
+                    results["false_warnings"] += 1
+                elif action == 0:
+                    results["safe_approvals"] += 1
+            
+            results["total_episodes"] += 1
+        
+        # Compute rates
+        metrics = {
+            "detection_rate": results["severe_detected"] / (results["severe_detected"] + results["severe_missed"] + 1e-6),
+            "false_negative_rate": results["severe_missed"] / (results["severe_detected"] + results["severe_missed"] + 1e-6),
+            "precision": results["severe_detected"] / (results["severe_detected"] + results["false_warnings"] + 1e-6),
+            "false_alarm_rate": results["false_warnings"] / results["total_episodes"]
+        }
+        
+        return metrics, results
+
+# evaluation/comparison.py
+
+def compare_policies(env, policies, n_episodes=100):
+    """
+    Compare multiple policies on same environment.
+    """
+    results = {}
+    
+    for name, policy in policies.items():
+        evaluator = SafetyMetrics(env, policy, n_episodes)
+        metrics, raw = evaluator.evaluate()
+        results[name] = metrics
+    
+    return pd.DataFrame(results).T
+```
+
+**Day 12 (8h): Robustness Testing**
+```python
+# evaluation/stress_test.py
+
+class RobustnessTest:
+    """
+    Test policy performance under increasing uncertainty.
+    """
+    def __init__(self, env, agent):
+        self.env = env
+        self.agent = agent
+    
+    def test_missing_data(self, missing_rates=[0.2, 0.4, 0.6, 0.8]):
+        """
+        Vary observation completeness and measure performance degradation.
+        """
+        results = []
+        
+        for rate in missing_rates:
+            self.env.observer.missing_rate = rate
+            evaluator = SafetyMetrics(self.env, self.agent, n_episodes=100)
+            metrics, _ = evaluator.evaluate()
+            metrics["missing_rate"] = rate
+            results.append(metrics)
+        
+        return pd.DataFrame(results)
+    
+    def test_noise_injection(self, noise_levels=[0.0, 0.1, 0.2, 0.3]):
+        """
+        Add noise to observations (e.g., wrong drug reported 10% of time).
+        """
+        # Implementation: perturb observation before state encoding
+        pass
+
+# evaluation/visualize.py
+
+def plot_learning_curve(history):
+    """Plot reward over episodes"""
+    plt.figure(figsize=(10, 5))
+    
+    # Smooth with moving average
+    window = 50
+    rewards_smooth = pd.Series(history["rewards"]).rolling(window).mean()
+    
+    plt.plot(rewards_smooth, label="Q-Learning")
+    plt.xlabel("Episode")
+    plt.ylabel("Average Reward (50-episode MA)")
+    plt.title("Learning Curve")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.savefig("results/learning_curve.png", dpi=150)
+
+def plot_robustness(df):
+    """Plot performance vs missing data rate"""
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    
+    axes[0].plot(df["missing_rate"], df["detection_rate"], marker='o')
+    axes[0].set_xlabel("Missing Data Rate")
+    axes[0].set_ylabel("Detection Rate")
+    axes[0].set_title("Safety vs Observability")
+    axes[0].grid(True, alpha=0.3)
+    
+    axes[1].plot(df["missing_rate"], df["false_alarm_rate"], marker='o', color='red')
+    axes[1].set_xlabel("Missing Data Rate")
+    axes[1].set_ylabel("False Alarm Rate")
+    axes[1].set_title("Alert Fatigue Risk")
+    axes[1].grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig("results/robustness.png", dpi=150)
+```
+
+**Success Criteria:**
+- ✅ RL agent detection rate ≥ 85%
+- ✅ RL outperforms both random and rule-based baselines
+- ✅ Performance degrades gracefully (< 30% drop at 60% missing data)
+- ✅ Statistical significance confirmed (t-test or bootstrap)
+
+---
+
+### **Phase 5: Documentation & Explainability** (Days 13-14)
+
+**Duration:** 2 days (16 hours)
+
+**Objectives:**
+- Complete README with citations
+- Create architecture diagram
+- Build decision trace tool
+- Write demo notebook
+
+**Day 13 (8h): Decision Explainability**
+```python
+# agent/explainer.py
+
+class DecisionExplainer:
+    """
+    Generate human-readable explanations for agent decisions.
+    """
+    def __init__(self, agent, env):
+        self.agent = agent
+        self.env = env
+    
+    def explain(self, observation):
+        """
+        Provide step-by-step explanation of decision.
+        """
+        state = encode_state(observation)
+        action = self.agent.select_action(state)
+        q_values = self.agent.q_table[state]
+        
+        explanation = {
+            "observation": observation,
+            "state_encoding": state,
+            "action_taken": self._action_name(action),
+            "q_values": {
+                self._action_name(i): float(q) 
+                for i, q in enumerate(q_values)
+            },
+            "risk_factors": self._identify_risks(observation),
+            "confidence": self._compute_confidence(q_values)
+        }
+        
+        return explanation
+    
+    def _action_name(self, action):
+        names = ["APPROVE", "WARN", "SUGGEST_ALT", "REQUEST_DATA"]
+        return names[action]
+    
+    def _identify_risks(self, observation):
+        """List detected risk factors"""
+        risks = []
+        meds = observation["medications"]
+        
+        for i in range(len(meds)):
+            for j in range(i+1, len(meds)):
+                pair = f"{meds[i]}+{meds[j]}"
+                if pair in self.env.interactions:
+                    risks.append({
+                        "type": "interaction",
+                        "drugs": [meds[i], meds[j]],
+                        "severity": self.env.interactions[pair]["severity"]
+                    })
+        
+        return risks
+    
+    def _compute_confidence(self, q_values):
+        """Confidence based on Q-value spread"""
+        best = np.max(q_values)
+        second_best = np.partition(q_values, -2)[-2]
+        confidence = (best - second_best) / (np.abs(best) + 1e-6)
+        return float(np.clip(confidence, 0, 1))
+```
+
+**Day 14 (8h): Final Documentation**
+
+**README Structure:**
+```markdown
+# Reinforcement Learning for

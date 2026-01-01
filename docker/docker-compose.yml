@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mlflow:
+    image: python:3.9-slim
+    container_name: mlflow-server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlruns
+      - ./mlflow.db:/mlflow.db
+    command: >
+      bash -c "pip install mlflow && 
+               mlflow server 
+               --backend-store-uri sqlite:///mlflow.db 
+               --default-artifact-root /mlruns 
+               --host 0.0.0.0 
+               --port 5000"
+    networks:
+      - rl-cdss-network
+
+  training:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: rl-cdss-training
+    volumes:
+      - ../data:/app/data
+      - ../models:/app/models
+      - ../results:/app/results
+      - ../logs:/app/logs
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - mlflow
+    networks:
+      - rl-cdss-network
+
+networks:
+  rl-cdss-network:
+    driver: bridge
