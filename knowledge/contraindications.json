@@ -1,0 +1,95 @@
+{
+    "contraindications": [
+        {
+            "id": "contra_001",
+            "drug": "metformin",
+            "condition": "renal_impairment",
+            "severity": "high",
+            "rationale": "Metformin is renally cleared. Impaired renal function increases lactic acidosis risk",
+            "clinical_criteria": "eGFR < 30 mL/min/1.73m² (absolute), eGFR 30-45 (relative)",
+            "penalty": -8,
+            "management": "Contraindicated if eGFR <30, use caution 30-45, monitor renal function",
+            "evidence_level": "High",
+            "source": "FDA Black Box Warning, ADA Guidelines"
+        },
+        {
+            "id": "contra_002",
+            "drug": "ibuprofen",
+            "condition": "heart_failure",
+            "severity": "medium",
+            "rationale": "NSAIDs cause fluid retention and worsen heart failure, increase hospitalization risk",
+            "clinical_criteria": "NYHA Class III-IV heart failure",
+            "penalty": -5,
+            "management": "Avoid NSAIDs, use acetaminophen or topical alternatives",
+            "evidence_level": "High",
+            "source": "ACC/AHA Heart Failure Guidelines, FDA"
+        },
+        {
+            "id": "contra_003",
+            "drug": "aspirin",
+            "condition": "renal_impairment",
+            "severity": "medium",
+            "rationale": "High-dose aspirin may worsen renal function via prostaglandin inhibition",
+            "clinical_criteria": "Severe CKD (Stage 4-5), eGFR <30",
+            "penalty": -5,
+            "management": "Use low-dose aspirin cautiously, avoid high doses",
+            "evidence_level": "Medium",
+            "source": "KDIGO Guidelines, Clinical Pharmacology"
+        },
+        {
+            "id": "contra_004",
+            "drug": "lisinopril",
+            "condition": "renal_impairment",
+            "severity": "medium",
+            "rationale": "ACE inhibitors may cause hyperkalemia and acute renal decline in CKD",
+            "clinical_criteria": "eGFR < 30, bilateral renal artery stenosis",
+            "penalty": -5,
+            "management": "Dose reduction required, monitor K+ and creatinine closely",
+            "evidence_level": "Medium-High",
+            "source": "KDIGO, FDA Label"
+        },
+        {
+            "id": "contra_005",
+            "drug": "warfarin",
+            "condition": "atrial_fibrillation",
+            "severity": "beneficial",
+            "rationale": "Warfarin is INDICATED for stroke prevention in AF (this is NOT a contraindication)",
+            "clinical_criteria": "CHA2DS2-VASc ≥2 for males, ≥3 for females",
+            "penalty": 0,
+            "management": "Standard anticoagulation with INR monitoring",
+            "evidence_level": "High",
+            "source": "ESC/AHA AF Guidelines"
+        },
+        {
+            "id": "contra_006",
+            "drug": "atorvastatin",
+            "condition": "diabetes",
+            "severity": "caution",
+            "rationale": "Statins slightly increase diabetes risk but benefits outweigh risks in CVD prevention",
+            "clinical_criteria": "Pre-existing diabetes or high risk",
+            "penalty": 0,
+            "management": "Monitor glucose, but do not withhold statin",
+            "evidence_level": "Medium",
+            "source": "ACC/AHA Cholesterol Guidelines"
+        }
+    ],
+    "metadata": {
+        "version": "1.0.0",
+        "last_updated": "2026-01-02",
+        "total_contraindications": 6,
+        "severity_distribution": {
+            "high": 1,
+            "medium": 3,
+            "beneficial": 1,
+            "caution": 1
+        },
+        "sources": [
+            "FDA Labels",
+            "Clinical Practice Guidelines",
+            "KDIGO",
+            "ACC/AHA"
+        ],
+        "curator": "Herald Michain Samuel Theo Ginting",
+        "note": "Includes both true contraindications and clinically important drug-condition interactions"
+    }
+}

@@ -1,0 +1,130 @@
+{
+    "drugs": [
+        {
+            "id": "warfarin",
+            "name": "Warfarin",
+            "generic_name": "Warfarin Sodium",
+            "drug_class": "Anticoagulant",
+            "mechanism": "Vitamin K antagonist - inhibits vitamin K-dependent clotting factors",
+            "indications": [
+                "Atrial fibrillation",
+                "DVT",
+                "PE",
+                "Prosthetic heart valves"
+            ],
+            "requires_monitoring": true,
+            "source": "DrugBank DB00682"
+        },
+        {
+            "id": "aspirin",
+            "name": "Aspirin",
+            "generic_name": "Acetylsalicylic Acid",
+            "drug_class": "Antiplatelet / NSAID",
+            "mechanism": "Irreversibly inhibits COX-1 and COX-2, reducing thromboxane A2",
+            "indications": [
+                "CVD prevention",
+                "MI",
+                "Stroke prevention",
+                "Pain"
+            ],
+            "requires_monitoring": false,
+            "source": "DrugBank DB00945"
+        },
+        {
+            "id": "ibuprofen",
+            "name": "Ibuprofen",
+            "generic_name": "Ibuprofen",
+            "drug_class": "NSAID",
+            "mechanism": "Reversibly inhibits COX-1 and COX-2, reducing prostaglandin synthesis",
+            "indications": [
+                "Pain relief",
+                "Inflammation",
+                "Fever",
+                "Arthritis"
+            ],
+            "requires_monitoring": false,
+            "source": "DrugBank DB01050"
+        },
+        {
+            "id": "metformin",
+            "name": "Metformin",
+            "generic_name": "Metformin Hydrochloride",
+            "drug_class": "Biguanide Antidiabetic",
+            "mechanism": "Decreases hepatic glucose production, increases insulin sensitivity",
+            "indications": [
+                "Type 2 diabetes",
+                "PCOS",
+                "Prediabetes"
+            ],
+            "requires_monitoring": true,
+            "monitoring": [
+                "Renal function",
+                "Vitamin B12"
+            ],
+            "source": "DrugBank DB00331"
+        },
+        {
+            "id": "lisinopril",
+            "name": "Lisinopril",
+            "generic_name": "Lisinopril",
+            "drug_class": "ACE Inhibitor",
+            "mechanism": "Inhibits ACE, preventing angiotensin I to II conversion",
+            "indications": [
+                "Hypertension",
+                "Heart failure",
+                "Post-MI",
+                "Diabetic nephropathy"
+            ],
+            "requires_monitoring": true,
+            "monitoring": [
+                "BP",
+                "Potassium",
+                "Renal function"
+            ],
+            "source": "DrugBank DB00722"
+        },
+        {
+            "id": "atorvastatin",
+            "name": "Atorvastatin",
+            "generic_name": "Atorvastatin Calcium",
+            "drug_class": "Statin",
+            "mechanism": "Inhibits HMG-CoA reductase, reducing cholesterol synthesis",
+            "indications": [
+                "Hyperlipidemia",
+                "CVD prevention"
+            ],
+            "requires_monitoring": true,
+            "monitoring": [
+                "Lipid panel",
+                "LFTs"
+            ],
+            "source": "DrugBank DB01076"
+        },
+        {
+            "id": "amlodipine",
+            "name": "Amlodipine",
+            "generic_name": "Amlodipine Besylate",
+            "drug_class": "Calcium Channel Blocker",
+            "mechanism": "Blocks L-type calcium channels, causing vasodilation",
+            "indications": [
+                "Hypertension",
+                "Angina",
+                "CAD"
+            ],
+            "requires_monitoring": true,
+            "monitoring": [
+                "BP",
+                "HR",
+                "Edema"
+            ],
+            "source": "DrugBank DB00381"
+        }
+    ],
+    "metadata": {
+        "version": "1.0.0",
+        "last_updated": "2026-01-02",
+        "source": "DrugBank (www.drugbank.com)",
+        "curator": "Herald Michain Samuel Theo Ginting",
+        "total_drugs": 7
+    }
+}

@@ -1,0 +1,190 @@
+{
+    "interactions": [
+        {
+            "id": "ddi_001",
+            "drug_pair": [
+                "warfarin",
+                "aspirin"
+            ],
+            "severity": "high",
+            "mechanism": "Additive anticoagulant effect - increased bleeding risk",
+            "clinical_effect": "Major bleeding, hemorrhage",
+            "penalty": -10,
+            "management": "Avoid combination or use with extreme caution, monitor INR closely",
+            "evidence_level": "High",
+            "source": "FDA Drug Interaction Label, DrugBank"
+        },
+        {
+            "id": "ddi_002",
+            "drug_pair": [
+                "warfarin",
+                "ibuprofen"
+            ],
+            "severity": "high",
+            "mechanism": "NSAIDs inhibit platelet function and may cause GI bleeding",
+            "clinical_effect": "Increased bleeding risk, GI hemorrhage",
+            "penalty": -10,
+            "management": "Use alternative analgesic (acetaminophen), monitor INR",
+            "evidence_level": "High",
+            "source": "FDA, DDInter"
+        },
+        {
+            "id": "ddi_003",
+            "drug_pair": [
+                "aspirin",
+                "ibuprofen"
+            ],
+            "severity": "medium",
+            "mechanism": "Ibuprofen may interfere with aspirin's cardioprotective effects",
+            "clinical_effect": "Reduced antiplatelet efficacy, increased GI bleeding",
+            "penalty": -5,
+            "management": "Take aspirin 2+ hours before ibuprofen",
+            "evidence_level": "Medium",
+            "source": "FDA Advisory, DrugBank"
+        },
+        {
+            "id": "ddi_004",
+            "drug_pair": [
+                "lisinopril",
+                "ibuprofen"
+            ],
+            "severity": "medium",
+            "mechanism": "NSAIDs reduce renal prostaglandins, antagonizing ACE inhibitor effect",
+            "clinical_effect": "Reduced blood pressure control, acute kidney injury",
+            "penalty": -5,
+            "management": "Monitor BP and renal function, use lowest NSAID dose",
+            "evidence_level": "Medium",
+            "source": "UpToDate, DrugBank"
+        },
+        {
+            "id": "ddi_005",
+            "drug_pair": [
+                "atorvastatin",
+                "warfarin"
+            ],
+            "severity": "medium",
+            "mechanism": "Statins may potentiate warfarin via CYP450 interactions",
+            "clinical_effect": "Increased INR, bleeding risk",
+            "penalty": -5,
+            "management": "Monitor INR when initiating/changing statin dose",
+            "evidence_level": "Medium",
+            "source": "FDA Label, DrugBank DB01076"
+        },
+        {
+            "id": "ddi_006",
+            "drug_pair": [
+                "metformin",
+                "ibuprofen"
+            ],
+            "severity": "low",
+            "mechanism": "NSAIDs may impair renal function, affecting metformin clearance",
+            "clinical_effect": "Increased metformin levels, lactic acidosis risk (rare)",
+            "penalty": -2,
+            "management": "Monitor renal function in elderly or those with CKD",
+            "evidence_level": "Low",
+            "source": "Clinical pharmacology literature"
+        },
+        {
+            "id": "ddi_007",
+            "drug_pair": [
+                "amlodipine",
+                "atorvastatin"
+            ],
+            "severity": "low",
+            "mechanism": "Amlodipine inhibits CYP3A4, increasing atorvastatin levels",
+            "clinical_effect": "Increased statin levels, myopathy risk",
+            "penalty": -2,
+            "management": "Use lower statin doses, monitor for muscle pain",
+            "evidence_level": "Low-Medium",
+            "source": "DrugBank, FDA Label"
+        },
+        {
+            "id": "ddi_008",
+            "drug_pair": [
+                "aspirin",
+                "lisinopril"
+            ],
+            "severity": "low",
+            "mechanism": "High-dose aspirin may reduce ACE inhibitor efficacy",
+            "clinical_effect": "Reduced blood pressure lowering",
+            "penalty": -2,
+            "management": "Use low-dose aspirin (<325mg), monitor BP",
+            "evidence_level": "Low",
+            "source": "Clinical guidelines"
+        },
+        {
+            "id": "ddi_009",
+            "drug_pair": [
+                "warfarin",
+                "metformin"
+            ],
+            "severity": "low",
+            "mechanism": "Minimal interaction, theoretical displacement from protein binding",
+            "clinical_effect": "Slight INR increase (rare)",
+            "penalty": -2,
+            "management": "Routine INR monitoring sufficient",
+            "evidence_level": "Very Low",
+            "source": "DrugBank"
+        },
+        {
+            "id": "ddi_010",
+            "drug_pair": [
+                "atorvastatin",
+                "amlodipine"
+            ],
+            "severity": "low",
+            "mechanism": "CYP3A4 interaction (duplicate of ddi_007)",
+            "clinical_effect": "Increased statin exposure",
+            "penalty": -2,
+            "management": "Dose adjustment",
+            "evidence_level": "Low",
+            "source": "FDA"
+        },
+        {
+            "id": "ddi_011",
+            "drug_pair": [
+                "warfarin",
+                "amlodipine"
+            ],
+            "severity": "low",
+            "mechanism": "Minimal pharmacodynamic interaction",
+            "clinical_effect": "Slight bleeding risk increase",
+            "penalty": -2,
+            "management": "Monitor INR per standard protocol",
+            "evidence_level": "Very Low",
+            "source": "DrugBank"
+        },
+        {
+            "id": "ddi_012",
+            "drug_pair": [
+                "metformin",
+                "lisinopril"
+            ],
+            "severity": "low",
+            "mechanism": "No significant interaction",
+            "clinical_effect": "Commonly co-prescribed safely",
+            "penalty": 0,
+            "management": "No special precautions",
+            "evidence_level": "None",
+            "source": "Clinical practice"
+        }
+    ],
+    "metadata": {
+        "version": "1.0.0",
+        "last_updated": "2026-01-02",
+        "total_interactions": 12,
+        "severity_distribution": {
+            "high": 2,
+            "medium": 3,
+            "low": 7
+        },
+        "sources": [
+            "FDA Drug Labels",
+            "DrugBank",
+            "DDInter Database",
+            "UpToDate"
+        ],
+        "curator": "Herald Michain Samuel Theo Ginting",
+        "validation": "Cross-referenced with FDA and clinical literature"
+    }
+}
