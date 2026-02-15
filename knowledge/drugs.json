@@ -6,12 +6,7 @@
             "generic_name": "Warfarin Sodium",
             "drug_class": "Anticoagulant",
             "mechanism": "Vitamin K antagonist - inhibits vitamin K-dependent clotting factors",
-            "indications": [
-                "Atrial fibrillation",
-                "DVT",
-                "PE",
-                "Prosthetic heart valves"
-            ],
+            "indications": ["Atrial fibrillation", "DVT", "PE", "Prosthetic heart valves"],
             "requires_monitoring": true,
             "source": "DrugBank DB00682"
         },
@@ -21,12 +16,7 @@
             "generic_name": "Acetylsalicylic Acid",
             "drug_class": "Antiplatelet / NSAID",
             "mechanism": "Irreversibly inhibits COX-1 and COX-2, reducing thromboxane A2",
-            "indications": [
-                "CVD prevention",
-                "MI",
-                "Stroke prevention",
-                "Pain"
-            ],
+            "indications": ["CVD prevention", "MI", "Stroke prevention", "Pain"],
             "requires_monitoring": false,
             "source": "DrugBank DB00945"
         },
@@ -36,12 +26,7 @@
             "generic_name": "Ibuprofen",
             "drug_class": "NSAID",
             "mechanism": "Reversibly inhibits COX-1 and COX-2, reducing prostaglandin synthesis",
-            "indications": [
-                "Pain relief",
-                "Inflammation",
-                "Fever",
-                "Arthritis"
-            ],
+            "indications": ["Pain relief", "Inflammation", "Fever", "Arthritis"],
             "requires_monitoring": false,
             "source": "DrugBank DB01050"
         },
@@ -51,16 +36,9 @@
             "generic_name": "Metformin Hydrochloride",
             "drug_class": "Biguanide Antidiabetic",
             "mechanism": "Decreases hepatic glucose production, increases insulin sensitivity",
-            "indications": [
-                "Type 2 diabetes",
-                "PCOS",
-                "Prediabetes"
-            ],
+            "indications": ["Type 2 diabetes", "PCOS", "Prediabetes"],
             "requires_monitoring": true,
-            "monitoring": [
-                "Renal function",
-                "Vitamin B12"
-            ],
+            "monitoring": ["Renal function", "Vitamin B12"],
             "source": "DrugBank DB00331"
         },
         {
@@ -69,18 +47,9 @@
             "generic_name": "Lisinopril",
             "drug_class": "ACE Inhibitor",
             "mechanism": "Inhibits ACE, preventing angiotensin I to II conversion",
-            "indications": [
-                "Hypertension",
-                "Heart failure",
-                "Post-MI",
-                "Diabetic nephropathy"
-            ],
+            "indications": ["Hypertension", "Heart failure", "Post-MI", "Diabetic nephropathy"],
             "requires_monitoring": true,
-            "monitoring": [
-                "BP",
-                "Potassium",
-                "Renal function"
-            ],
+            "monitoring": ["BP", "Potassium", "Renal function"],
             "source": "DrugBank DB00722"
         },
         {
@@ -89,15 +58,9 @@
             "generic_name": "Atorvastatin Calcium",
             "drug_class": "Statin",
             "mechanism": "Inhibits HMG-CoA reductase, reducing cholesterol synthesis",
-            "indications": [
-                "Hyperlipidemia",
-                "CVD prevention"
-            ],
+            "indications": ["Hyperlipidemia", "CVD prevention"],
             "requires_monitoring": true,
-            "monitoring": [
-                "Lipid panel",
-                "LFTs"
-            ],
+            "monitoring": ["Lipid panel", "LFTs"],
             "source": "DrugBank DB01076"
         },
         {
@@ -106,25 +69,500 @@
             "generic_name": "Amlodipine Besylate",
             "drug_class": "Calcium Channel Blocker",
             "mechanism": "Blocks L-type calcium channels, causing vasodilation",
-            "indications": [
-                "Hypertension",
-                "Angina",
-                "CAD"
-            ],
+            "indications": ["Hypertension", "Angina", "CAD"],
             "requires_monitoring": true,
-            "monitoring": [
-                "BP",
-                "HR",
-                "Edema"
-            ],
+            "monitoring": ["BP", "HR", "Edema"],
             "source": "DrugBank DB00381"
+        },
+        {
+            "id": "metoprolol",
+            "name": "Metoprolol",
+            "generic_name": "Metoprolol Tartrate/Succinate",
+            "drug_class": "Beta-Blocker (Selective)",
+            "mechanism": "Selective beta-1 adrenergic receptor antagonist, reduces heart rate and contractility",
+            "indications": ["Hypertension", "Heart failure", "Angina", "Post-MI", "Atrial fibrillation rate control"],
+            "requires_monitoring": true,
+            "monitoring": ["BP", "HR", "Blood glucose (diabetes)"],
+            "source": "DrugBank DB00264"
+        },
+        {
+            "id": "atenolol",
+            "name": "Atenolol",
+            "generic_name": "Atenolol",
+            "drug_class": "Beta-Blocker (Selective)",
+            "mechanism": "Selective beta-1 adrenergic receptor antagonist",
+            "indications": ["Hypertension", "Angina", "Post-MI"],
+            "requires_monitoring": true,
+            "monitoring": ["BP", "HR"],
+            "source": "DrugBank DB00335"
+        },
+        {
+            "id": "carvedilol",
+            "name": "Carvedilol",
+            "generic_name": "Carvedilol",
+            "drug_class": "Beta-Blocker (Non-selective + Alpha-blocker)",
+            "mechanism": "Non-selective beta and alpha-1 adrenergic antagonist",
+            "indications": ["Heart failure", "Hypertension", "Post-MI"],
+            "requires_monitoring": true,
+            "monitoring": ["BP", "HR", "LFTs"],
+            "source": "DrugBank DB01136"
+        },
+        {
+            "id": "enalapril",
+            "name": "Enalapril",
+            "generic_name": "Enalapril Maleate",
+            "drug_class": "ACE Inhibitor",
+            "mechanism": "Inhibits ACE, preventing angiotensin I to II conversion",
+            "indications": ["Hypertension", "Heart failure", "Diabetic nephropathy"],
+            "requires_monitoring": true,
+            "monitoring": ["BP", "Potassium", "Renal function"],
+            "source": "DrugBank DB00584"
+        },
+        {
+            "id": "ramipril",
+            "name": "Ramipril",
+            "generic_name": "Ramipril",
+            "drug_class": "ACE Inhibitor",
+            "mechanism": "Inhibits ACE, reduces angiotensin II formation",
+            "indications": ["Hypertension", "Heart failure", "Post-MI", "CVD risk reduction"],
+            "requires_monitoring": true,
+            "monitoring": ["BP", "Potassium", "SCr"],
+            "source": "DrugBank DB00178"
+        },
+        {
+            "id": "losartan",
+            "name": "Losartan",
+            "generic_name": "Losartan Potassium",
+            "drug_class": "Angiotensin II Receptor Blocker (ARB)",
+            "mechanism": "Selective AT1 receptor antagonist, blocks angiotensin II effects",
+            "indications": ["Hypertension", "Diabetic nephropathy", "Heart failure", "Stroke prevention"],
+            "requires_monitoring": true,
+            "monitoring": ["BP", "Potassium", "Renal function"],
+            "source": "DrugBank DB00678"
+        },
+        {
+            "id": "valsartan",
+            "name": "Valsartan",
+            "generic_name": "Valsartan",
+            "drug_class": "Angiotensin II Receptor Blocker (ARB)",
+            "mechanism": "Selective AT1 receptor antagonist",
+            "indications": ["Hypertension", "Heart failure", "Post-MI"],
+            "requires_monitoring": true,
+            "monitoring": ["BP", "Potassium", "Renal function"],
+            "source": "DrugBank DB00177"
+        },
+        {
+            "id": "furosemide",
+            "name": "Furosemide",
+            "generic_name": "Furosemide",
+            "drug_class": "Loop Diuretic",
+            "mechanism": "Inhibits Na-K-2Cl cotransporter in loop of Henle",
+            "indications": ["Edema", "Heart failure", "Hypertension", "Renal impairment"],
+            "requires_monitoring": true,
+            "monitoring": ["Electrolytes", "BP", "Renal function", "Volume status"],
+            "source": "DrugBank DB00695"
+        },
+        {
+            "id": "hydrochlorothiazide",
+            "name": "Hydrochlorothiazide",
+            "generic_name": "Hydrochlorothiazide",
+            "drug_class": "Thiazide Diuretic",
+            "mechanism": "Inhibits Na-Cl cotransporter in distal convoluted tubule",
+            "indications": ["Hypertension", "Edema", "Diabetes insipidus"],
+            "requires_monitoring": true,
+            "monitoring": ["Electrolytes", "BP", "Glucose", "Uric acid"],
+            "source": "DrugBank DB00999"
+        },
+        {
+            "id": "spironolactone",
+            "name": "Spironolactone",
+            "generic_name": "Spironolactone",
+            "drug_class": "Potassium-Sparing Diuretic (Aldosterone Antagonist)",
+            "mechanism": "Competitive aldosterone antagonist in distal tubule",
+            "indications": ["Heart failure", "Hypertension", "Edema", "Hyperaldosteronism"],
+            "requires_monitoring": true,
+            "monitoring": ["Potassium", "Renal function", "BP"],
+            "source": "DrugBank DB00421"
+        },
+        {
+            "id": "rivaroxaban",
+            "name": "Rivaroxaban",
+            "generic_name": "Rivaroxaban",
+            "drug_class": "Direct Oral Anticoagulant (DOAC) - Factor Xa Inhibitor",
+            "mechanism": "Selective factor Xa inhibitor, prevents thrombin generation",
+            "indications": ["Atrial fibrillation", "DVT", "PE", "VTE prophylaxis"],
+            "requires_monitoring": false,
+            "monitoring": ["Renal function", "Bleeding signs"],
+            "source": "DrugBank DB06228"
+        },
+        {
+            "id": "apixaban",
+            "name": "Apixaban",
+            "generic_name": "Apixaban",
+            "drug_class": "Direct Oral Anticoagulant (DOAC) - Factor Xa Inhibitor",
+            "mechanism": "Selective factor Xa inhibitor",
+            "indications": ["Atrial fibrillation", "DVT", "PE", "VTE prophylaxis"],
+            "requires_monitoring": false,
+            "monitoring": ["Renal function", "Bleeding signs"],
+            "source": "DrugBank DB06605"
+        },
+        {
+            "id": "dabigatran",
+            "name": "Dabigatran",
+            "generic_name": "Dabigatran Etexilate",
+            "drug_class": "Direct Oral Anticoagulant (DOAC) - Direct Thrombin Inhibitor",
+            "mechanism": "Direct thrombin (factor IIa) inhibitor",
+            "indications": ["Atrial fibrillation", "DVT", "PE", "VTE prophylaxis"],
+            "requires_monitoring": false,
+            "monitoring": ["Renal function", "Bleeding signs"],
+            "source": "DrugBank DB06695"
+        },
+        {
+            "id": "clopidogrel",
+            "name": "Clopidogrel",
+            "generic_name": "Clopidogrel Bisulfate",
+            "drug_class": "Antiplatelet (P2Y12 Inhibitor)",
+            "mechanism": "Irreversibly blocks ADP-induced platelet aggregation via P2Y12 receptor",
+            "indications": ["ACS", "Post-stent", "Stroke prevention", "PAD"],
+            "requires_monitoring": false,
+            "monitoring": ["Bleeding signs"],
+            "source": "DrugBank DB00758"
+        },
+        {
+            "id": "digoxin",
+            "name": "Digoxin",
+            "generic_name": "Digoxin",
+            "drug_class": "Cardiac Glycoside",
+            "mechanism": "Inhibits Na-K-ATPase, increases intracellular calcium, positive inotrope",
+            "indications": ["Heart failure", "Atrial fibrillation rate control"],
+            "requires_monitoring": true,
+            "monitoring": ["Digoxin level", "Potassium", "Renal function", "ECG"],
+            "source": "DrugBank DB00390"
+        },
+        {
+            "id": "amoxicillin",
+            "name": "Amoxicillin",
+            "generic_name": "Amoxicillin",
+            "drug_class": "Penicillin Antibiotic",
+            "mechanism": "Beta-lactam antibiotic, inhibits bacterial cell wall synthesis",
+            "indications": ["Bacterial infections", "H. pylori eradication", "Dental infections", "Sinusitis"],
+            "requires_monitoring": false,
+            "monitoring": ["Allergic reactions"],
+            "source": "DrugBank DB01060"
+        },
+        {
+            "id": "azithromycin",
+            "name": "Azithromycin",
+            "generic_name": "Azithromycin",
+            "drug_class": "Macrolide Antibiotic",
+            "mechanism": "Binds 50S ribosomal subunit, inhibits bacterial protein synthesis",
+            "indications": ["Respiratory tract infections", "STIs", "Skin infections"],
+            "requires_monitoring": false,
+            "monitoring": ["QT interval (if risk factors)", "LFTs"],
+            "source": "DrugBank DB00207"
+        },
+        {
+            "id": "ciprofloxacin",
+            "name": "Ciprofloxacin",
+            "generic_name": "Ciprofloxacin Hydrochloride",
+            "drug_class": "Fluoroquinolone Antibiotic",
+            "mechanism": "Inhibits bacterial DNA gyrase and topoisomerase IV",
+            "indications": ["UTI", "GI infections", "Respiratory infections", "Anthrax"],
+            "requires_monitoring": true,
+            "monitoring": ["Tendon pain", "QT interval", "CNS effects"],
+            "source": "DrugBank DB00537"
+        },
+        {
+            "id": "levofloxacin",
+            "name": "Levofloxacin",
+            "generic_name": "Levofloxacin",
+            "drug_class": "Fluoroquinolone Antibiotic",
+            "mechanism": "Inhibits DNA gyrase and topoisomerase IV",
+            "indications": ["Pneumonia", "UTI", "Skin infections", "Sinusitis"],
+            "requires_monitoring": true,
+            "monitoring": ["Tendon rupture", "QT prolongation", "Neuropathy"],
+            "source": "DrugBank DB01137"
+        },
+        {
+            "id": "clarithromycin",
+            "name": "Clarithromycin",
+            "generic_name": "Clarithromycin",
+            "drug_class": "Macrolide Antibiotic",
+            "mechanism": "50S ribosomal subunit inhibitor",
+            "indications": ["Respiratory infections", "H. pylori", "MAC"],
+            "requires_monitoring": true,
+            "monitoring": ["QT interval", "LFTs", "Drug interactions (CYP3A4)"],
+            "source": "DrugBank DB01211"
+        },
+        {
+            "id": "erythromycin",
+            "name": "Erythromycin",
+            "generic_name": "Erythromycin",
+            "drug_class": "Macrolide Antibiotic",
+            "mechanism": "Inhibits 50S ribosomal subunit",
+            "indications": ["Respiratory infections", "Skin infections", "Chlamydia"],
+            "requires_monitoring": true,
+            "monitoring": ["QT interval", "GI upset", "LFTs"],
+            "source": "DrugBank DB00199"
+        },
+        {
+            "id": "doxycycline",
+            "name": "Doxycycline",
+            "generic_name": "Doxycycline Hyclate",
+            "drug_class": "Tetracycline Antibiotic",
+            "mechanism": "30S ribosomal subunit inhibitor, bacteriostatic",
+            "indications": ["Respiratory infections", "Lyme disease", "Acne", "Malaria prophylaxis"],
+            "requires_monitoring": false,
+            "monitoring": ["Photosensitivity", "GI upset"],
+            "source": "DrugBank DB00254"
+        },
+        {
+            "id": "cephalexin",
+            "name": "Cephalexin",
+            "generic_name": "Cephalexin",
+            "drug_class": "Cephalosporin Antibiotic (1st Gen)",
+            "mechanism": "Beta-lactam, inhibits cell wall synthesis",
+            "indications": ["Skin infections", "UTI", "Respiratory infections"],
+            "requires_monitoring": false,
+            "monitoring": ["Allergic reactions (cross-reactivity with penicillins)"],
+            "source": "DrugBank DB00567"
+        },
+        {
+            "id": "ampicillin",
+            "name": "Ampicillin",
+            "generic_name": "Ampicillin",
+            "drug_class": "Penicillin Antibiotic",
+            "mechanism": "Beta-lactam, bactericidal via cell wall inhibition",
+            "indications": ["Meningitis", "Endocarditis", "GI infections", "UTI"],
+            "requires_monitoring": false,
+            "monitoring": ["Allergic reactions", "Rash (especially with EBV)"],
+            "source": "DrugBank DB00415"
+        },
+        {
+            "id": "trimethoprim_sulfamethoxazole",
+            "name": "Trimethoprim-Sulfamethoxazole",
+            "generic_name": "TMP-SMX (Co-trimoxazole)",
+            "drug_class": "Sulfonamide Antibiotic Combination",
+            "mechanism": "Inhibits bacterial folate synthesis (synergistic dual mechanism)",
+            "indications": ["UTI", "PCP prophylaxis", "MRSA infections", "Toxoplasmosis"],
+            "requires_monitoring": true,
+            "monitoring": ["CBC", "Renal function", "K+", "Stevens-Johnson syndrome risk"],
+            "source": "DrugBank DB00440"
+        },
+        {
+            "id": "fluoxetine",
+            "name": "Fluoxetine",
+            "generic_name": "Fluoxetine Hydrochloride",
+            "drug_class": "SSRI Antidepressant",
+            "mechanism": "Selective serotonin reuptake inhibitor",
+            "indications": ["Major depression", "OCD", "Panic disorder", "Bulimia"],
+            "requires_monitoring": true,
+            "monitoring": ["Suicidal ideation", "Serotonin syndrome", "QT interval"],
+            "source": "DrugBank DB00472"
+        },
+        {
+            "id": "sertraline",
+            "name": "Sertraline",
+            "generic_name": "Sertraline Hydrochloride",
+            "drug_class": "SSRI Antidepressant",
+            "mechanism": "Selective serotonin reuptake inhibitor",
+            "indications": ["Major depression", "PTSD", "OCD", "Social anxiety"],
+            "requires_monitoring": true,
+            "monitoring": ["Mood", "Suicidal thoughts", "Bleeding risk (with anticoagulants)"],
+            "source": "DrugBank DB01104"
+        },
+        {
+            "id": "escitalopram",
+            "name": "Escitalopram",
+            "generic_name": "Escitalopram Oxalate",
+            "drug_class": "SSRI Antidepressant",
+            "mechanism": "Highly selective serotonin reuptake inhibitor",
+            "indications": ["Major depression", "Generalized anxiety disorder"],
+            "requires_monitoring": true,
+            "monitoring": ["QT interval", "Hyponatremia (elderly)", "Suicidal ideation"],
+            "source": "DrugBank DB01175"
+        },
+        {
+            "id": "diazepam",
+            "name": "Diazepam",
+            "generic_name": "Diazepam",
+            "drug_class": "Benzodiazepine",
+            "mechanism": "GABA-A receptor positive allosteric modulator",
+            "indications": ["Anxiety", "Seizures", "Muscle spasms", "Alcohol withdrawal"],
+            "requires_monitoring": true,
+            "monitoring": ["Respiratory depression", "Dependence", "Sedation"],
+            "source": "DrugBank DB00829"
+        },
+        {
+            "id": "alprazolam",
+            "name": "Alprazolam",
+            "generic_name": "Alprazolam",
+            "drug_class": "Benzodiazepine",
+            "mechanism": "GABA-A receptor enhancer",
+            "indications": ["Anxiety disorders", "Panic disorder"],
+            "requires_monitoring": true,
+            "monitoring": ["Dependence", "Respiratory depression", "Cognitive impairment"],
+            "source": "DrugBank DB00404"
+        },
+        {
+            "id": "tramadol",
+            "name": "Tramadol",
+            "generic_name": "Tramadol Hydrochloride",
+            "drug_class": "Opioid Analgesic (Weak)",
+            "mechanism": "Mu-opioid receptor agonist + SNRI activity",
+            "indications": ["Moderate to severe pain"],
+            "requires_monitoring": true,
+            "monitoring": ["Respiratory depression", "Seizure risk", "Serotonin syndrome", "Dependence"],
+            "source": "DrugBank DB00193"
+        },
+        {
+            "id": "phenytoin",
+            "name": "Phenytoin",
+            "generic_name": "Phenytoin Sodium",
+            "drug_class": "Anticonvulsant",
+            "mechanism": "Voltage-gated sodium channel blocker",
+            "indications": ["Epilepsy", "Seizure prophylaxis"],
+            "requires_monitoring": true,
+            "monitoring": ["Phenytoin level", "CBC", "LFTs", "Gingival hyperplasia"],
+            "source": "DrugBank DB00252"
+        },
+        {
+            "id": "carbamazepine",
+            "name": "Carbamazepine",
+            "generic_name": "Carbamazepine",
+            "drug_class": "Anticonvulsant",
+            "mechanism": "Sodium channel blocker, mood stabilizer",
+            "indications": ["Epilepsy", "Trigeminal neuralgia", "Bipolar disorder"],
+            "requires_monitoring": true,
+            "monitoring": ["CBC", "Carbamazepine level", "LFTs", "Na+ (SIADH)"],
+            "source": "DrugBank DB00564"
+        },
+        {
+            "id": "insulin_glargine",
+            "name": "Insulin Glargine",
+            "generic_name": "Insulin Glargine",
+            "drug_class": "Long-Acting Insulin",
+            "mechanism": "Recombinant insulin analog, glucose uptake and metabolism",
+            "indications": ["Type 1 diabetes", "Type 2 diabetes"],
+            "requires_monitoring": true,
+            "monitoring": ["Blood glucose", "HbA1c", "Hypoglycemia"],
+            "source": "DrugBank DB00047"
+        },
+        {
+            "id": "glipizide",
+            "name": "Glipizide",
+            "generic_name": "Glipizide",
+            "drug_class": "Sulfonylurea",
+            "mechanism": "Stimulates pancreatic beta cells to release insulin",
+            "indications": ["Type 2 diabetes"],
+            "requires_monitoring": true,
+            "monitoring": ["Blood glucose", "HbA1c", "Hypoglycemia risk"],
+            "source": "DrugBank DB01067"
+        },
+        {
+            "id": "levothyroxine",
+            "name": "Levothyroxine",
+            "generic_name": "Levothyroxine Sodium",
+            "drug_class": "Thyroid Hormone Replacement",
+            "mechanism": "Synthetic T4 hormone replacement",
+            "indications": ["Hypothyroidism", "TSH suppression"],
+            "requires_monitoring": true,
+            "monitoring": ["TSH", "Free T4", "Heart rate", "Bone density (long-term)"],
+            "source": "DrugBank DB00451"
+        },
+        {
+            "id": "prednisone",
+            "name": "Prednisone",
+            "generic_name": "Prednisone",
+            "drug_class": "Corticosteroid",
+            "mechanism": "Glucocorticoid receptor agonist, anti-inflammatory and immunosuppressive",
+            "indications": ["Asthma", "Autoimmune diseases", "Allergic reactions", "IBD"],
+            "requires_monitoring": true,
+            "monitoring": ["Blood glucose", "BP", "Bone density", "Electrolytes", "Infection risk"],
+            "source": "DrugBank DB00635"
+        },
+        {
+            "id": "omeprazole",
+            "name": "Omeprazole",
+            "generic_name": "Omeprazole",
+            "drug_class": "Proton Pump Inhibitor (PPI)",
+            "mechanism": "Irreversibly inhibits H+/K+ ATPase in gastric parietal cells",
+            "indications": ["GERD", "Peptic ulcer", "H. pylori eradication", "Zollinger-Ellison syndrome"],
+            "requires_monitoring": false,
+            "monitoring": ["Mg2+ (long-term use)", "B12 (long-term)", "C. diff risk"],
+            "source": "DrugBank DB00338"
+        },
+        {
+            "id": "pantoprazole",
+            "name": "Pantoprazole",
+            "generic_name": "Pantoprazole Sodium",
+            "drug_class": "Proton Pump Inhibitor (PPI)",
+            "mechanism": "Proton pump inhibitor",
+            "indications": ["GERD", "Erosive esophagitis", "Peptic ulcer"],
+            "requires_monitoring": false,
+            "monitoring": ["Mg2+", "B12", "Fracture risk (long-term)"],
+            "source": "DrugBank DB00213"
+        },
+        {
+            "id": "ranitidine",
+            "name": "Ranitidine",
+            "generic_name": "Ranitidine Hydrochloride",
+            "drug_class": "H2 Receptor Antagonist",
+            "mechanism": "Competitive H2 receptor antagonist, reduces gastric acid",
+            "indications": ["GERD", "Peptic ulcer", "Dyspepsia"],
+            "requires_monitoring": false,
+            "monitoring": ["Renal function (dose adjust in CKD)"],
+            "source": "DrugBank DB00863"
+        },
+        {
+            "id": "albuterol",
+            "name": "Albuterol",
+            "generic_name": "Albuterol Sulfate (Salbutamol)",
+            "drug_class": "Beta-2 Agonist Bronchodilator",
+            "mechanism": "Selective beta-2 adrenergic agonist, bronchodilation",
+            "indications": ["Asthma", "COPD", "Bronchospasm"],
+            "requires_monitoring": true,
+            "monitoring": ["HR", "Tremor", "K+ (with high doses)"],
+            "source": "DrugBank DB01001"
+        },
+        {
+            "id": "montelukast",
+            "name": "Montelukast",
+            "generic_name": "Montelukast Sodium",
+            "drug_class": "Leukotriene Receptor Antagonist",
+            "mechanism": "Blocks leukotriene D4 receptors, reduces airway inflammation",
+            "indications": ["Asthma", "Allergic rhinitis", "Exercise-induced bronchospasm"],
+            "requires_monitoring": false,
+            "monitoring": ["Neuropsychiatric events (mood changes, suicidal ideation)"],
+            "source": "DrugBank DB00471"
+        },
+        {
+            "id": "sitagliptin",
+            "name": "Sitagliptin",
+            "generic_name": "Sitagliptin Phosphate",
+            "drug_class": "DPP-4 Inhibitor",
+            "mechanism": "Inhibits dipeptidyl peptidase-4, increases incretin levels",
+            "indications": ["Type 2 diabetes"],
+            "requires_monitoring": true,
+            "monitoring": ["Blood glucose", "HbA1c", "Renal function", "Pancreatitis symptoms"],
+            "source": "DrugBank DB01261"
         }
     ],
     "metadata": {
-        "version": "1.0.0",
-        "last_updated": "2026-01-02",
-        "source": "DrugBank (www.drugbank.com)",
+        "version": "3.0.0",
+        "last_updated": "2026-02-15",
+        "source": "DrugBank (www.drugbank.com), FDA Drug Labels",
         "curator": "Herald Michain Samuel Theo Ginting",
-        "total_drugs": 7
+        "total_drugs": 50,
+        "phase": "Phase 8 - Knowledge Base Expansion COMPLETE",
+        "changelog": "Added 28 drugs: 10 antibiotics (Amoxicillin, Azithromycin, Ciprofloxacin, Levofloxacin, Clarithromycin, Erythromycin, Doxycycline, Cephalexin, Ampicillin, TMP-SMX), 8 CNS drugs (Fluoxetine, Sertraline, Escitalopram, Diazepam, Alprazolam, Tramadol, Phenytoin, Carbamazepine), 5 endocrine (Insulin glargine, Glipizide, Sitagliptin, Levothyroxine, Prednisone), 3 GI (Omeprazole, Pantoprazole, Ranitidine), 2 respiratory (Albuterol, Montelukast). Final count: 50 drugs (from 7 baseline).",
+        "categories": {
+            "cardiovascular": 22,
+            "antibiotics": 10,
+            "cns": 8,
+            "endocrine": 5,
+            "gastrointestinal": 3,
+            "respiratory": 2
+        }
     }
 }
